@@ -37,49 +37,45 @@ E:\Vicharak\
 
 
 
-🛠️ Hardware Overview: Vicharak Shrike Architecture
+---
+
+## 🛠️ Hardware Overview: Vicharak Shrike Architecture
+
 The Vicharak board bridges a dual-core ARM Cortex-M0+ microcontroller with programmable fabric:
 
-Raspberry Pi RP2040 (02_RP2040_C & 03_RP2040_Python):
+* **Raspberry Pi RP2040 (`02_RP2040_C` & `03_RP2040_Python`)**:
+  * Runs core application firmware.
+  * Handles USB/UART communication and sensor interfaces.
+  * Manages bitstream programming and high-speed data bridging with the onboard FPGA.
+* **Renesas ForgeFPGA (`01_FPGA`)**:
+  * Provides programmable logic fabric for low-latency hardware acceleration.
+  * Executes custom pin mappings, hardware PWM generators, and parallel processing pipelines.
 
-Runs core application firmware.
+---
 
-Handles USB/UART communication and sensor interfaces.
+## 📂 Why Build Folders Are Excluded from Git (`.gitignore`)
 
-Manages bitstream programming and high-speed data bridging with the onboard FPGA.
+In the GitHub repository, folders such as `02_RP2040_C/build/`, intermediate object files (`.obj`, `.o`), executable ELF files, UF2 images, and CMake configuration logs are intentionally excluded using `.gitignore`.
 
-Renesas ForgeFPGA (01_FPGA):
+* **Separation of Source and Artifacts**: Version control systems like Git are designed exclusively to track human-authored source files (such as `main.c`, `top.v`, `main.py`, and `CMakeLists.txt`). Machine-generated files are strictly compilation outputs.
+* **Repository Size & Cleanliness**: Building with the Raspberry Pi Pico SDK and Ninja creates hundreds of temporary cache and toolchain dependency files. Excluding them keeps the repository lightweight (a few kilobytes instead of hundreds of megabytes) and fast to clone.
+* **Environment Independence**: Build cache files contain host-specific absolute file system paths (e.g., `E:/Vicharak/02_RP2040_C/build/...`). Committing these paths would break compilation on other machines or operating systems.
+* **Reproducible Local Builds**: Build binaries can be generated cleanly on demand anytime by running the Ninja build pipeline.
 
-Provides programmable logic fabric for low-latency hardware acceleration.
+---
 
-Executes custom pin mappings, hardware PWM generators, and parallel processing pipelines.
+## 💻 Getting Started & Development Guide
 
-📂 Why Build Folders Are Excluded from Git (.gitignore)
-In the GitHub repository, folders such as 02_RP2040_C/build/, intermediate object files (.obj, .o), executable ELF files, UF2 images, and CMake configuration logs are intentionally excluded using .gitignore.
-
-Detailed Explanation:
-Separation of Source and Artifacts: Version control systems like Git are designed exclusively to track human-authored source files (such as main.c, top.v, main.py, and CMakeLists.txt). Machine-generated files are strictly compilation outputs.
-
-Repository Size & Cleanliness: Building with the Raspberry Pi Pico SDK and Ninja creates hundreds of temporary cache and toolchain dependency files. Excluding them keeps the repository lightweight (a few kilobytes instead of hundreds of megabytes) and fast to clone.
-
-Environment Independence: Build cache files contain host-specific absolute file system paths (e.g., E:/Vicharak/02_RP2040_C/build/...). Committing these paths would break compilation on other machines or operating systems.
-
-Reproducible Local Builds: Build binaries can be generated cleanly on demand anytime by running the Ninja build pipeline.
-
-💻 Getting Started & Development Guide
-1. Opening the Unified Workspace in VS Code
+### 1. Opening the Unified Workspace in VS Code
 To manage C/C++, Verilog, and MicroPython simultaneously:
+1. Launch **Visual Studio Code**.
+2. Navigate to **File > Open Workspace from File...**.
+3. Select `E:\Vicharak\vicharak.code-workspace`.
 
-Launch Visual Studio Code.
+### 2. Building RP2040 C/C++ Firmware (`02_RP2040_C`)
+To compile the RP2040 firmware into a deployable `.uf2` binary:
 
-Navigate to File > Open Workspace from File....
-
-Select E:\Vicharak\vicharak.code-workspace.
-
-2. Building RP2040 C/C++ Firmware (02_RP2040_C)
-To compile the RP2040 firmware into a deployable .uf2 binary:
-
-PowerShell
+```powershell
 # Navigate to the RP2040 C folder
 cd E:\Vicharak\02_RP2040_C
 
@@ -95,7 +91,11 @@ cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE="$env:PICO_SDK_PATH\cmake\preload\toolch
 
 # Execute build
 ninja
+
+---------------------------------------------------------------------------------------------------------
+
 Flashing the Firmware:
+
 Connect the Vicharak board to your computer while holding down the BOOTSEL button.
 
 Release the button when the RPI-RP2 drive appears in File Explorer.
@@ -122,14 +122,11 @@ git commit -m "feat: add SPI communication bridge between RP2040 and FPGA"
 
 # Push to GitHub
 git push origin main
+---------------------------------------------------------------------------------------------------------
 
----
-
-### Push this README to GitHub
-
-Run these commands in your Git Bash terminal to sync your updated `README.md` to GitHub:
-
-```bash
-git add README.md
-git commit -m "docs: add comprehensive README documentation"
-git push origin main
+### Step 2: Paste and Save
+1. Go back to your open GitHub browser window.
+2. Place your cursor right at the very end of the text you already pasted.
+3. Paste the code above so that it seamlessly completes the file.
+4. Click the **Preview** tab at the top to check how it looks.
+5. Click the green **Commit changes...** button at the top right, write a short commit message like *"docs: add complete development guide to README"*, and hit **Commit changes** to save everything.
