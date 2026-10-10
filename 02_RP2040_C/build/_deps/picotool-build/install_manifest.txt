@@ -1,0 +1,6 @@
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/picotool.exe
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/picotoolTargets.cmake
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/picotoolTargets-release.cmake
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/picotoolConfig.cmake
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/picotoolConfigVersion.cmake
+E:/Vicharak/02_RP2040_C/build/_deps/picotool/enc_bootloader.elf

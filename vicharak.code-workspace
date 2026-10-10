@@ -1,0 +1,14 @@
+﻿{
+    "folders": [
+        { "name": "01 FPGA (Verilog)", "path": "01_FPGA" },
+        { "name": "02 RP2040 (C/C++)", "path": "02_RP2040_C" },
+        { "name": "03 MicroPython", "path": "03_RP2040_Python" },
+        { "name": "04 Docs & Tools", "path": "04_Docs" }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.v": "verilog",
+            "*.pcf": "properties"
+        }
+    }
+}
