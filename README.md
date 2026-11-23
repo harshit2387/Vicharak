@@ -50,3 +50,8 @@ From `06_RP2040_Rust`, run `make` to build the ELF and UF2. Hold **BOOTSEL** whi
 - FPGA user LED: GPIO16, blinked by the FPGA design after the RP2040 configures the FPGA.
 
 The board must be connected in BOOTSEL mode for UF2 copying. Do not copy firmware to an unrelated removable drive.
+
+<img width="1268" height="797" alt="Screenshot 2026-11-22 224128" src="https://github.com/user-attachments/assets/64f89d59-4159-4c1d-9d5d-3275d8a80b53" />
+<img width="1204" height="1599" alt="WhatsApp Image 2026-11-23 at 4 01 29 PM" src="https://github.com/user-attachments/assets/e83ae712-bd57-4880-9f45-d11307febc21" />
+
+
